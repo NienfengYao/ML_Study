@@ -7,6 +7,8 @@
   * Introduction.ipynb
   * tensorflow_tips_01.ipynb
     * What is difference between tf.truncated_normal and tf.random_normal?
+    * tf.nn.conv2d-是怎麼實現卷積的？
+    * tf.nn.max_pool 實現池化操作
 
 * Simple Classification Example
   * simple_classification.ipynb
@@ -34,12 +36,6 @@
       * 2 x Convolution layer. (Convolution + Pooling)
       * 1 x Full connected layer.
       * 1 x Ouptut layer.
-  * ToDo
-    * tf.truncated_normal
-    * tf.nn.dropout
-    * tf.nn.conv2d
-    * tf.nn.max_pool
-
 
 # Temp
 * [Tensorflow-101](https://github.com/c1mone/Tensorflow-101)
