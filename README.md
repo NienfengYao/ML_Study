@@ -5,8 +5,6 @@
 
 * Basic of TensorFlow
   * [Introduction.ipynb](./Introduction.ipynb)
-    * ToDo
-      * [Graphs and Sessions](https://www.tensorflow.org/guide/graphs)
   * [tensorflow_tips_01.ipynb](./tensorflow_tips_01.ipynb)
     * What is difference between tf.truncated_normal and tf.random_normal?
     * tf.nn.conv2d-是怎麼實現卷積的？
@@ -39,6 +37,10 @@
       * 2 x Convolution layer. (Convolution + Pooling)
       * 1 x Full connected layer.
       * 1 x Ouptut layer.
+
+* VGG16
+  * 使用已經訓練完的 VGG16 模型，在 Tensorflow 上直接進行圖片預測.
+    * [vgg16_pretrained_predict.ipynb](vgg16/vgg16_pretrained_predict.ipynb)
 
 # Temp
 * [Tensorflow-101](https://github.com/c1mone/Tensorflow-101)
