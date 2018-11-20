@@ -44,6 +44,8 @@
     * [vgg16_pretrained_predict.ipynb](vgg16/vgg16_pretrained_predict.ipynb)
   * 利用 CIFAR-10 dataset，使用 VGG16 模型進行 training.
     * [vgg-cifar10_train.ipynb](vgg16/vgg-cifar10_train.ipynb)
+  * VGG16 Transfer learning
+    * [Transfer_Learning.ipynb](vgg16/transfer-learning/Transfer_Learning.ipynb)
 
 # Temp
 * [Tensorflow-101](https://github.com/c1mone/Tensorflow-101)
