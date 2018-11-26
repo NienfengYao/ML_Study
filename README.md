@@ -46,6 +46,8 @@
     * [vgg-cifar10_train.ipynb](vgg16/vgg-cifar10_train.ipynb)
   * VGG16 Transfer learning
     * [Transfer_Learning.ipynb](vgg16/transfer-learning/Transfer_Learning.ipynb)
+  * [VGG16 final](vgg16/vgg16_final/README.md)
+    * Using the same vgg16 model to redo the exercises previously.
 
 # Temp
 * [Tensorflow-101](https://github.com/c1mone/Tensorflow-101)
