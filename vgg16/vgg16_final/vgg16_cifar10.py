@@ -24,7 +24,6 @@ class vgg16:
             self.mean = None
         self.convlayers()
         self.fc_layers()
-        self.out = self.fc3l
         self.probs = tf.nn.softmax(self.fc3l)
 
     def convlayers(self):
@@ -258,25 +257,3 @@ class vgg16:
             print( i, k, np.shape(weights[k]))
             sess.run(self.parameters[i].assign(weights[k]))
 
-
-if __name__ == '__main__':
-    weights = 'vgg16_weights.npz'
-    sess = tf.Session()
-    imgs = tf.placeholder(tf.float32, [None, 224, 224, 3])
-    vgg = vgg16(imgs, mean=[123.68, 116.779, 103.939])
-    if weights is not None and sess is not None:
-        vgg.load_weights(weights, sess)
-    else:
-        print("No weight file or sess")
-        exit()
-
-    img1 = imread('laska.png', pilmode='RGB')
-    # img1 = imread('cat.jpg', mode='RGB')
-    # img1 = imread('dog.jpg', mode='RGB')
-    # img1 = imresize(img1, (224, 224))
-    img1 = imresize(img1, (224, 224))
-
-    prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
-    preds = (np.argsort(prob)[::-1])[0:5]
-    for p in preds:
-        print( class_names[p], prob[p])
