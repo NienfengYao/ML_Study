@@ -15,6 +15,29 @@ from imageio import imread
 from imagenet_classes import class_names
 
 
+def batch_norm(inputs, is_training, is_conv_out=True, decay = 0.999):
+
+    scale = tf.Variable(tf.ones([inputs.get_shape()[-1]]))
+    beta = tf.Variable(tf.zeros([inputs.get_shape()[-1]]))
+    pop_mean = tf.Variable(tf.zeros([inputs.get_shape()[-1]]), trainable=False)
+    pop_var = tf.Variable(tf.ones([inputs.get_shape()[-1]]), trainable=False)
+
+    if is_training:
+        if is_conv_out:
+            batch_mean, batch_var = tf.nn.moments(inputs,[0,1,2])
+        else:
+            batch_mean, batch_var = tf.nn.moments(inputs,[0])
+
+        train_mean = tf.assign(pop_mean, pop_mean * decay + batch_mean * (1 - decay))
+        train_var = tf.assign(pop_var, pop_var * decay + batch_var * (1 - decay))
+
+        with tf.control_dependencies([train_mean, train_var]):
+            return tf.nn.batch_normalization(inputs,
+                batch_mean, batch_var, beta, scale, 0.001)
+    else:
+        return tf.nn.batch_normalization(inputs,
+            pop_mean, pop_var, beta, scale, 0.001)
+
 class vgg16:
     def __init__(self, imgs, mean=None):
         self.imgs = imgs
@@ -45,6 +68,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[64], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv1_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -56,6 +80,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[64], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv1_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -74,6 +99,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv2_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -85,6 +111,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[128], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv2_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -103,6 +130,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[256], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv3_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -114,6 +142,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[256], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv3_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -125,6 +154,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[256], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv3_3 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -143,6 +173,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[512], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv4_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -154,6 +185,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[512], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv4_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -165,6 +197,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[512], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv4_3 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -183,6 +216,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[512], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv5_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -194,6 +228,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[512], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv5_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -205,6 +240,7 @@ class vgg16:
             biases = tf.Variable(tf.constant(0.0, shape=[512], dtype=tf.float32),
                                  trainable=True, name='biases')
             out = tf.nn.bias_add(conv, biases)
+            out = batch_norm(out, True)
             self.conv5_3 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
@@ -226,6 +262,7 @@ class vgg16:
                                  trainable=True, name='biases')
             pool5_flat = tf.reshape(self.pool5, [-1, shape])
             fc1l = tf.nn.bias_add(tf.matmul(pool5_flat, fc1w), fc1b)
+            fc1l = batch_norm(fc1l, True, False)
             self.fc1 = tf.nn.relu(fc1l)
             self.parameters += [fc1w, fc1b]
 
@@ -237,6 +274,7 @@ class vgg16:
             fc2b = tf.Variable(tf.constant(1.0, shape=[4096], dtype=tf.float32),
                                  trainable=True, name='biases')
             fc2l = tf.nn.bias_add(tf.matmul(self.fc1, fc2w), fc2b)
+            fc2l = batch_norm(fc2l, True, False)
             self.fc2 = tf.nn.relu(fc2l)
             self.parameters += [fc2w, fc2b]
 

@@ -21,12 +21,12 @@
 
 * functions
   * The missed files, please download from [VGG in TensorFlow](https://www.cs.toronto.edu/~frossard/post/vgg16/)
-  * example: trained vgg16 to predict. (Done)
-  * example: vgg16 training fully with cifar-10 data (Failed)
-    * Because the original VGG16 model is fixed in 1000 output.
-      If we want to train with CIFAR-10 dataset which is 10 output, we have to modify the original network.
-      It's not what we want. (We want to base the original VGG16 network to do test)
-    * Going:
+  * example: trained vgg16 to predict.
+  * example: vgg16 training fully with cifar-10 data.
+    * Step1:
       * Base the original VGG16 mode, only change the last output layer to create vgg16_cifar10 class to do the exercise.
-      * Issue: training failed, we can't get good accuracy.
-  * example: vgg16 transfer learning with flower dataset. (Done)
+      * Issue: training failed, we can't get good accuracy. (Fixed by Step1)
+    * Step2:
+      * Add batch normalization in each hidden layers. Now, we can get good accuracy.
+      * But Why?
+  * example: vgg16 transfer learning with flower dataset.
