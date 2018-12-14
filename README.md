@@ -49,5 +49,7 @@
   * [VGG16 final](vgg16/vgg16_final/README.md)
     * Using the same vgg16 model to redo the exercises previously.
 
+* [Tutorials use tf.keras]
+
 # Temp
 * [Tensorflow-101](https://github.com/c1mone/Tensorflow-101)
