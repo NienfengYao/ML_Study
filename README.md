@@ -1,8 +1,12 @@
-# TensorFlow_Study
+# Machine Learning Study
 * Environment
-  * TensorFlow: 1.13.0
-  * Python: 3.6.6
+  * Docker version 18.09.3
+  * Python 3.5.2  
+  * TensorFlow: 1.13.1
 
+* LeNet
+
+---
 * Basic of TensorFlow
   * [Introduction.ipynb](./Introduction.ipynb)
   * [tensorflow_tips_01.ipynb](./tensorflow_tips_01.ipynb)
