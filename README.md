@@ -1,10 +1,6 @@
 # Machine Learning Study
-* Environment
-  * Docker version 18.09.3
-  * Python 3.5.2  
-  * TensorFlow: 1.13.1
-
-* LeNet
+* VGG-16
+  * [vgg16_introduction.ipynb](vgg16/vgg16_introduction.ipynb)
 
 ---
 * Basic of TensorFlow
@@ -42,18 +38,8 @@
       * 1 x Full connected layer.
       * 1 x Ouptut layer.
 
-* VGG16
-  * [vgg16_introduction.ipynb](vgg16/vgg16_introduction.ipynb)
-  * 使用已經訓練完的 VGG16 模型，在 Tensorflow 上直接進行圖片預測.
-    * [vgg16_pretrained_predict.ipynb](vgg16/vgg16_pretrained_predict.ipynb)
-  * 利用 CIFAR-10 dataset，使用 VGG16 模型進行 training.
-    * [vgg-cifar10_train.ipynb](vgg16/vgg-cifar10_train.ipynb)
-  * VGG16 Transfer learning
-    * [Transfer_Learning.ipynb](vgg16/transfer-learning/Transfer_Learning.ipynb)
-  * [VGG16 final](vgg16/vgg16_final/README.md)
-    * Using the same vgg16 model to redo the exercises previously.
 
-* [Tutorials use tf.keras]
 
 # Temp
 * [Tensorflow-101](https://github.com/c1mone/Tensorflow-101)
+* [Tutorials use tf.keras]
