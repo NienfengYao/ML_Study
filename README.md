@@ -1,7 +1,9 @@
 # Machine Learning Study
 * VGG-16
   * [vgg16_introduction.ipynb](vgg16/vgg16_introduction.ipynb)
-
+* MobileNet
+  * [mobilenet_study.ipynb](mobilenet/mobilenet_study.ipynb)
+  
 ---
 * Basic of TensorFlow
   * [Introduction.ipynb](./Introduction.ipynb)
