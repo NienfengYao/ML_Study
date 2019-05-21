@@ -3,7 +3,8 @@
   * [vgg16_introduction.ipynb](vgg16/vgg16_introduction.ipynb)
 * MobileNet
   * [mobilenet_study.ipynb](mobilenet/mobilenet_study.ipynb)
-  
+* [onnx_list_layer_operation.ipynb](./onnx_list_layer_operation.ipynb)
+  * Show the layer operateion of each model in onnx zoo.
 ---
 * Basic of TensorFlow
   * [Introduction.ipynb](./Introduction.ipynb)
